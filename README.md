@@ -1,5 +1,7 @@
 # godot-neovide-bridge
 
+![Godot Engine](https://img.shields.io/badge/GODOT-%23FFFFFF.svg?style=for-the-badge&logo=godot-engine)
+
 Small set of scripts for easier integration of Neovide
 as Godot Engine external editor.
 
