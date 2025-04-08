@@ -1,4 +1,4 @@
-# https://github.com/neovide/neovide/issues/2481#issuecomment-2081810651
+# Based on: https://github.com/neovide/neovide/issues/2481#issuecomment-2081810651
 #!/usr/bin/env pwsh
 $server_path = "127.0.0.1:55432"
 $file = $args[0]
@@ -11,11 +11,9 @@ if (-not $portInUse) {
     Start-Process -FilePath "neovide" -ArgumentList "$file", "--", "--listen", "$server_path"
 }
 
-# Connect to nvim server and send commands
 # Note: This assumes nvim is in PATH and supports the same server commands
 $remote_command = "<C-\><C-N>:n $file<CR>:call cursor($line,$col)<CR>"
 $additional_args = $args[3..($args.Length-1)]
-
-# Execute nvim with server connection.
 $nvim_args = @("--server", "$server_path", "--remote-send", "$remote_command") + $additional_args
+
 & nvim $nvim_args
