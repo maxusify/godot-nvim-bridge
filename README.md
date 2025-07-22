@@ -40,6 +40,7 @@ And set it as follows:
 ```
 External Editor: Custom
 Custom Exec Path: /path/to/godot-neovide-bridge/windows/run.cmd
+Custom Exec Path: /path/to/godot-neovide-bridge/linux/godot-nvim-bridge.sh
 Custom Exec Path Args: {file} {col} {line}
 ```
 
@@ -51,7 +52,8 @@ alias gdnvim="nvim --listen $HOME/.cache/nvim/godot-server.pipe"
 
 ## Troubleshooting
 
-If Neovim is complaining about address being already in use, just remove the existing pipe file and restart Neovim.
+If Neovim is complaining about address being already in use,  
+just remove the existing pipe file and restart Neovim.
 
 ```bash
 rm $HOME/.cache/nvim/godot-server.pipe
