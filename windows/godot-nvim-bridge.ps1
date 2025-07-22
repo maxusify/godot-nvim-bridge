@@ -1,14 +1,16 @@
-# Based on: https://github.com/neovide/neovide/issues/2481#issuecomment-2081810651
 #!/usr/bin/env pwsh
-$server_path = "127.0.0.1:55432"
+# Based on: https://github.com/neovide/neovide/issues/2481#issuecomment-2081810651
+
 $file = $args[0]
 $line = $args[1]
 $col = $args[2]
+$server_path = "127.0.0.1:55432"
+$program = "neovide"
 $portInUse = [bool](Get-NetTCPConnection -LocalPort 55432 -ErrorAction SilentlyContinue)
 
 # Check if server exists, if not start neovide.
 if (-not $portInUse) {
-    Start-Process -FilePath "neovide" -ArgumentList "$file", "--", "--listen", "$server_path"
+    Start-Process -FilePath "$program" -ArgumentList "$file", "--", "--listen", "$server_path"
 }
 
 # Note: This assumes nvim is in PATH and supports the same server commands
